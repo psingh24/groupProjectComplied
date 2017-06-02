@@ -1,5 +1,6 @@
 $(document).ready(function(){
 var user = $("#username");
+var username;
  // Initialize Firebase
   var config = {
     apiKey: "AIzaSyCgQFFxv6-cd0vRQesrZUD447sO7AEYklo",
@@ -26,6 +27,7 @@ function googleSignIn() {
 			  // The signed-in user info.
 			  var user = result.user;
 			  // ...
+              username = user.displayName;
 			  console.log(user.displayName)
                if (user) {
                 // User is signed in.
@@ -90,9 +92,7 @@ function facebookSignIn() {
 $(".signin").on("click", function() {
 	var method = $(this).attr("data")
 	console.log("hello")
-
-
-	if (method === "google") {
+        if (method === "google") {
 		googleSignIn();
           user.html("Welcome "+ user.displayName)
 		
@@ -102,6 +102,16 @@ $(".signin").on("click", function() {
           user.html("Welcome "+ user.displayName)
 		
 	} 
+})
+
+firebase.auth().onAuthStateChanged(function(firebaseUser){
+	if(firebaseUser) {
+		//USer is signed in
+		console.log(firebaseUser)
+		// $(".name").html("<h2>Hi "+firebaseUser+"!</h2>")
+	} else {
+		console.log("not lgged In")
+	}
 })
 
  function loadMainPage() {
