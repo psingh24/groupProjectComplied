@@ -112,5 +112,9 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
  function loadMainPage() {
      window.location = 'preferences.html';
  }
+
+ ref.on("value", function(snapshot) {
+     console.log(snapshot)
+ })
 //   user.html("Welcome "+ user.displayName)
 })
