@@ -107,7 +107,7 @@ firebase.auth().signOut().then(function() {
   // An error happened.
 });
 };
-$(document).on("click", "#logout", logout)
+$(document).on("click", "#logout", logOut)
 
 firebase.auth().onAuthStateChanged(function(firebaseUser){
 	if(firebaseUser) {
