@@ -91,7 +91,7 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
 		//USer is signed in
 		userHtml.html("Welcome "+ firebaseUser.displayName) 
         console.log(firebaseUser.email)
-        firebase.database().ref('user/' + user.uid).set({
+        firebase.database().ref('user/' + firebaseUser.uid).set({
              name: user.displayName,
             email: user.email,
             likes: "blank"
