@@ -103,6 +103,7 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
 	if(firebaseUser) {
 		//USer is signed in
 		console.log(firebaseUser)
+        ser.html("Welcome "+ firebaseUser.displayName) 
 		// $(".name").html("<h2>Hi "+firebaseUser+"!</h2>")
 	} else {
 		console.log("not lgged In")
@@ -114,8 +115,9 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
  }
 
  ref.on("value", function(snapshot) {
-     console.log(snapshot)
+     console.log(snapshot.displayName)
 user.html("Welcome "+ snapshot.displayName) 
+
 
  })
 //   user.html("Welcome "+ user.displayName)
