@@ -99,15 +99,15 @@ $(".signin").on("click", function() {
 	} 
 })
 // Sign Out
-function logOut(){
+$("#logout").on("click", function() {
 firebase.auth().signOut().then(function() {
   // Sign-out successful.
   loadLoginPage();
 }).catch(function(error) {
   // An error happened.
 });
-};
-$(document).on("click", "#logout", logOut)
+})
+
 
 firebase.auth().onAuthStateChanged(function(firebaseUser){
 	if(firebaseUser) {
