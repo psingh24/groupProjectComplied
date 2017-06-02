@@ -63,14 +63,9 @@ function facebookSignIn() {
 		  var user = result.user;
 
 		  console.log(user.displayName)
-          
-           if (user) {
-                // User is signed in.
-                loadMainPage()
-                } else {
-                // No user is signed in.
-                console.log("no one signed in")
-                }
+          loadMainPage()
+           console.log(user.displayName)
+                
                  user.html("Welcome "+ user.displayName)
 		  var data = {
 		  	name: user.displayName
