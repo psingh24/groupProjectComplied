@@ -94,12 +94,12 @@ $(".signin").on("click", function() {
 
 	if (method === "google") {
 		googleSignIn();
-        //   user.html("Welcome "+ user.displayName)
+          user.html("Welcome "+ user.displayName)
 		
 	}
 	else if(method === "facebook") {
 		facebookSignIn();
-        //   user.html("Welcome "+ user.displayName)
+          user.html("Welcome "+ user.displayName)
 		
 	} 
 })
