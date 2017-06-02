@@ -1,6 +1,7 @@
 $(document).ready(function(){
-var user = $("#username");
+var userHtml = $("#username");
 var username;
+var user;
  // Initialize Firebase
   var config = {
     apiKey: "AIzaSyCgQFFxv6-cd0vRQesrZUD447sO7AEYklo",
@@ -12,10 +13,10 @@ var username;
   };
   firebase.initializeApp(config);
 
-var database = firebase.database();
+// var database = firebase.database();
 
-var ref = database.ref("user")
-console.log(ref)
+// var ref = database.ref("user")
+// console.log(ref)
 
   //instance of the goggle provider object
 var google = new firebase.auth.GoogleAuthProvider();
@@ -26,18 +27,11 @@ function googleSignIn() {
 			  // This gives you a Google Access Token. You can use it to access the Google API.
 			  var token = result.credential.accessToken;
 			  // The signed-in user info.
-			  var user = result.user;
+			  user = result.user;
 			  // ...
-              username = user.displayName;
-			  console.log(user.displayName)
-               if (user) {
-                // User is signed in.
-                loadMainPage()
-                } else {
-                // No user is signed in.
-                console.log("no one signed in")
-            }
-            
+             username = user.displayName;
+             loadMainPage()
+                
 			}).catch(function(error) {
 			  // Handle Errors here.
 			  var errorCode = error.code;
@@ -103,7 +97,7 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
 	if(firebaseUser) {
 		//USer is signed in
 		console.log(firebaseUser)
-        user.html("Welcome "+ firebaseUser.displayName) 
+        userHtml.html("Welcome "+ firebaseUser.displayName) 
         console.log(firebaseUser.email)
 		// $(".name").html("<h2>Hi "+firebaseUser+"!</h2>")
 	} else {
@@ -119,9 +113,10 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
      window.location = 'index.html';
  }
 
-// firebase.database().ref('user/' +user.uid).set({
-//     name: user.displayName,
-//     email: user.email
-// })
+firebase.database().ref('user/' + user.uid).set({
+    name: user.displayName,
+    email: user.email,
+    likes: "blank"
+})
 //   user.html("Welcome "+ user.displayName)
 })
