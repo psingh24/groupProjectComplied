@@ -115,7 +115,7 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
 var ref = firebase.database().ref("users");
 ref.once("value")
   .then(function(snapshot) {
-    var key = snapshot.key.firebaseUser.uid 
+    var key = snapshot.key.firebaseUser
     var childKey = snapshot.child("name").val()
     console.log(key, childKey)
   });
