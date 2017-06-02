@@ -15,6 +15,7 @@ var username;
 var database = firebase.database();
 
 var ref = database.ref("user")
+console.log(ref)
 
   //instance of the goggle provider object
 var google = new firebase.auth.GoogleAuthProvider();
@@ -37,12 +38,6 @@ function googleSignIn() {
                 console.log("no one signed in")
             }
             
-            user.html("Welcome "+ user.displayName)
-
-			    var data = {
-		  	name: user.displayName
-		  }
-		  ref.push(data)
 			}).catch(function(error) {
 			  // Handle Errors here.
 			  var errorCode = error.code;
@@ -66,11 +61,6 @@ function facebookSignIn() {
           loadMainPage()
            console.log(user.displayName)
                 
-                 user.html("Welcome "+ user.displayName)
-		  var data = {
-		  	name: user.displayName
-		  }
-		  ref.push(data)
 		  // ...
 		}).catch(function(error) {
 		  // Handle Errors here.
@@ -89,12 +79,12 @@ $(".signin").on("click", function() {
 	console.log("hello")
         if (method === "google") {
 		googleSignIn();
-          user.html("Welcome "+ user.displayName)
+          
 		
 	}
 	else if(method === "facebook") {
 		facebookSignIn();
-          user.html("Welcome "+ user.displayName)
+
 		
 	} 
 })
@@ -114,6 +104,10 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
 		//USer is signed in
 		console.log(firebaseUser)
         user.html("Welcome "+ firebaseUser.displayName) 
+            var data = {
+		  	name: firebaseUser.displayName
+		  }
+		  ref.push(data)
 		// $(".name").html("<h2>Hi "+firebaseUser+"!</h2>")
 	} else {
 		console.log("not lgged In")
