@@ -107,7 +107,7 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
             var data = {
 		  	name: firebaseUser.displayName
 		  }
-		  ref.push(data)
+		  ref.set(data)
 		// $(".name").html("<h2>Hi "+firebaseUser+"!</h2>")
 	} else {
 		console.log("not lgged In")
