@@ -115,6 +115,8 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
 
  ref.on("value", function(snapshot) {
      console.log(snapshot)
+user.html("Welcome "+ snapshot.displayName) 
+
  })
 //   user.html("Welcome "+ user.displayName)
 })
