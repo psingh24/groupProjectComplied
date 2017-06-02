@@ -93,8 +93,8 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
 		userHtml.html("Welcome "+ firebaseUser.displayName) 
         console.log(firebaseUser.email)
         firebase.database().ref('user/' + firebaseUser.uid).set({
-             name: user.displayName,
-            email: user.email,
+             name: firebaseUser.displayName,
+            email: firebaseUser.email,
             likes: "blank"
 })
 		// $(".name").html("<h2>Hi "+firebaseUser+"!</h2>")
