@@ -120,10 +120,12 @@ ref.once("value")
     var child = snapshot.child
     var children = snapshot.child("name").key
      var children2 = snapshot.child("name").val()
+     var children3 = snapshot.child("name").child("name").val()
     console.log(key)
      console.log(child)
       console.log(children)
       console.log(children2)
+      console.log(children3)
   });
 
 
