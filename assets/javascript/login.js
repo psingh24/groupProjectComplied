@@ -83,7 +83,7 @@ function facebookSignIn() {
 		  // ...
 });
   }
-
+// Sign in
 $(".signin").on("click", function() {
 	var method = $(this).attr("data")
 	console.log("hello")
@@ -98,6 +98,16 @@ $(".signin").on("click", function() {
 		
 	} 
 })
+// Sign Out
+function logOut(){
+firebase.auth().signOut().then(function() {
+  // Sign-out successful.
+  loadLoginPage();
+}).catch(function(error) {
+  // An error happened.
+});
+};
+$(document).on("click", "#logout", logout)
 
 firebase.auth().onAuthStateChanged(function(firebaseUser){
 	if(firebaseUser) {
@@ -112,6 +122,10 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
 
  function loadMainPage() {
      window.location = 'preferences.html';
+ }
+
+  function loadLoginPage() {
+     window.location = 'index.html';
  }
 
  ref.on("value", function(snapshot) {
