@@ -31,7 +31,7 @@ function googleSignIn() {
 			  // ...
              username = user.displayName;
              
-                
+                 loadMainPage()
 			}).catch(function(error) {
 			  // Handle Errors here.
 			  var errorCode = error.code;
@@ -50,6 +50,7 @@ function facebookSignIn() {
 		  var token = result.credential.accessToken;
 		  // The signed-in user info.
 		  var user = result.user;
+           loadMainPage()
 			  // ...
              username = user.displayName;
         }).catch(function(error) {
@@ -87,7 +88,7 @@ firebase.auth().signOut().then(function() {
 
 firebase.auth().onAuthStateChanged(function(firebaseUser){
 	if(firebaseUser) {
-        loadMainPage()
+       
 		//USer is signed in
 		userHtml.html("Welcome "+ firebaseUser.displayName) 
         console.log(firebaseUser.email)
