@@ -1,0 +1,74 @@
+/*Login page CSS*/
+
+body {
+   background: url("../images/austin.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+#modal-login {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#login-logo{
+	display: block;
+    margin: auto;
+    width: 50%;
+    height: 50%;
+}
+
+
+
+#login {
+	margin-top: 20px;
+}
+
+.nav {
+	color: black;
+}
+
+#logo-text {
+	color: black;
+}
+
+.navbar-default {
+	color: orange;
+}
+
+.category {
+	height: 300px;
+	width: 100%;
+}
+
+.navbar-logo {
+    width: 30px;
+    height: 30px;
+}
+
+/*Event Page*/
+
+#date {
+	color: green;
+}
+
+#title {
+	color: purple;
+}
+
+#time {
+	margin-left: 10px;
+}
+
+#venue {
+	margin-left: 10px;
+}
+
+.panel-heading {
+	padding-top: 80px;
+}
+
