@@ -103,7 +103,7 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
 	if(firebaseUser) {
 		//USer is signed in
 		console.log(firebaseUser)
-        ser.html("Welcome "+ firebaseUser.displayName) 
+        user.html("Welcome "+ firebaseUser.displayName) 
 		// $(".name").html("<h2>Hi "+firebaseUser+"!</h2>")
 	} else {
 		console.log("not lgged In")
