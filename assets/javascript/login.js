@@ -94,18 +94,18 @@ $(".signin").on("click", function() {
 
 	if (method === "google") {
 		googleSignIn();
+        //   user.html("Welcome "+ user.displayName)
 		
 	}
 	else if(method === "facebook") {
 		facebookSignIn();
+        //   user.html("Welcome "+ user.displayName)
 		
-	} else {
-
-	}
+	} 
 })
 
  function loadMainPage() {
      window.location = 'preferences.html';
  }
-
+//   user.html("Welcome "+ user.displayName)
 })
