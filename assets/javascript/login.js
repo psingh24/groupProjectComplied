@@ -112,5 +112,14 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
  }
 
 
+var ref = firebase.database().ref("users");
+ref.once("value")
+  .then(function(snapshot) {
+    var key = snapshot.key; 
+    var childKey = snapshot.child("name").key
+    console.log(key, childKey)
+  });
+
+
 //   user.html("Welcome "+ user.displayName)
 })
