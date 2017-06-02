@@ -104,10 +104,7 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
 		//USer is signed in
 		console.log(firebaseUser)
         user.html("Welcome "+ firebaseUser.displayName) 
-            var data = {
-		  	name: firebaseUser.displayName
-		  }
-		  ref.set(data)
+        console.log(firebaseUser.email)
 		// $(".name").html("<h2>Hi "+firebaseUser+"!</h2>")
 	} else {
 		console.log("not lgged In")
@@ -122,11 +119,9 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
      window.location = 'index.html';
  }
 
- ref.on("value", function(snapshot) {
-     console.log(snapshot)
-
-
-
- })
+// firebase.database().ref('user/' +user.uid).set({
+//     name: user.displayName,
+//     email: user.email
+// })
 //   user.html("Welcome "+ user.displayName)
 })
