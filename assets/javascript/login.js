@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+var user = $("#username");
  // Initialize Firebase
   var config = {
     apiKey: "AIzaSyCgQFFxv6-cd0vRQesrZUD447sO7AEYklo",
@@ -33,7 +33,9 @@ function googleSignIn() {
                 } else {
                 // No user is signed in.
                 console.log("no one signed in")
-                }
+            }
+            
+            user.html("Welcome "+ user.displayName)
 
 			    var data = {
 		  	name: user.displayName
@@ -59,6 +61,7 @@ function facebookSignIn() {
 		  var user = result.user;
 
 		  console.log(user.displayName)
+          
            if (user) {
                 // User is signed in.
                 loadMainPage()
@@ -66,7 +69,7 @@ function facebookSignIn() {
                 // No user is signed in.
                 console.log("no one signed in")
                 }
-		 
+                 user.html("Welcome "+ user.displayName)
 		  var data = {
 		  	name: user.displayName
 		  }
