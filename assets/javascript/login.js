@@ -1,7 +1,7 @@
 $(document).ready(function(){
 var userHtml = $("#username");
 var username;
-var user;
+
  // Initialize Firebase
   var config = {
     apiKey: "AIzaSyCgQFFxv6-cd0vRQesrZUD447sO7AEYklo",
@@ -27,10 +27,10 @@ function googleSignIn() {
 			  // This gives you a Google Access Token. You can use it to access the Google API.
 			  var token = result.credential.accessToken;
 			  // The signed-in user info.
-			  user = result.user;
+			  var user = result.user;
 			  // ...
              username = user.displayName;
-             loadMainPage()
+             
                 
 			}).catch(function(error) {
 			  // Handle Errors here.
@@ -50,13 +50,9 @@ function facebookSignIn() {
 		  var token = result.credential.accessToken;
 		  // The signed-in user info.
 		  var user = result.user;
-
-		  console.log(user.displayName)
-          loadMainPage()
-           console.log(user.displayName)
-                
-		  // ...
-		}).catch(function(error) {
+			  // ...
+             username = user.displayName;
+        }).catch(function(error) {
 		  // Handle Errors here.
 		  var errorCode = error.code;
 		  var errorMessage = error.message;
@@ -73,14 +69,10 @@ $(".signin").on("click", function() {
 	console.log("hello")
         if (method === "google") {
 		googleSignIn();
-          
-		
-	}
+        }
 	else if(method === "facebook") {
 		facebookSignIn();
-
-		
-	} 
+    } 
 })
 // Sign Out
 $("#logout").on("click", function() {
@@ -95,10 +87,15 @@ firebase.auth().signOut().then(function() {
 
 firebase.auth().onAuthStateChanged(function(firebaseUser){
 	if(firebaseUser) {
+        loadMainPage()
 		//USer is signed in
-		console.log(firebaseUser)
-        userHtml.html("Welcome "+ firebaseUser.displayName) 
+		userHtml.html("Welcome "+ firebaseUser.displayName) 
         console.log(firebaseUser.email)
+        firebase.database().ref('user/' + user.uid).set({
+             name: user.displayName,
+            email: user.email,
+            likes: "blank"
+})
 		// $(".name").html("<h2>Hi "+firebaseUser+"!</h2>")
 	} else {
 		console.log("not lgged In")
@@ -113,10 +110,6 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
      window.location = 'index.html';
  }
 
-firebase.database().ref('user/' + user.uid).set({
-    name: user.displayName,
-    email: user.email,
-    likes: "blank"
-})
+
 //   user.html("Welcome "+ user.displayName)
 })
