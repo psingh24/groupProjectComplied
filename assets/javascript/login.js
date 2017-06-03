@@ -115,7 +115,7 @@ var ref = firebase.database().ref("user");
 ref.once("value")
   .then(function(snapshot) {
     
-    var name = snapshot.child("name").val();
+    var name = snapshot.child().child("name").val();
     var email = snapshot.child("email").val();
     var list = snapshot.child("likes").val()
     console.log(name, email)
