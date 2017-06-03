@@ -116,13 +116,13 @@ ref.once("value")
   .then(function(snapshot) {
     
     var key = snapshot.key
-    var child = snapshot.child("user").key
+    // var child = snapshot.child("user").key
     var children = snapshot.child("name").key
      var children2 = snapshot.child("name").val()
      var children3 = snapshot.child("name").child("name").val()
       var children3 = snapshot.child("name").child("name").key
-    console.log(key)
-     console.log(child)
+    console.log(key.child())
+    //  console.log(child)
       console.log(children)
       console.log(children2)
       console.log(children3)
