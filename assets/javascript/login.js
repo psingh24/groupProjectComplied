@@ -92,7 +92,8 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
 		//USer is signed in
 		userHtml.html("Welcome "+ firebaseUser.displayName) 
         console.log(firebaseUser.email)
-        firebase.database().ref('user/' + firebaseUser.displayName).set({
+        firebase.database().ref('user').set({
+            name: firebaseUser.displayName,
             email: firebaseUser.email,
             likes: "blank"
 })
@@ -121,7 +122,8 @@ ref.once("value")
      var children2 = snapshot.child("name").val()
      var children3 = snapshot.child("name").child("name").val()
       var children3 = snapshot.child("name").child("name").key
-    console.log(key.child())
+      console.log(snapshot.child("name").val())
+      console.log(snapshot.child("user/name").val())
     //  console.log(child)
       console.log(children)
       console.log(children2)
