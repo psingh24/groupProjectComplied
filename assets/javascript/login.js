@@ -116,18 +116,12 @@ var ref = firebase.database().ref("user");
 ref.once("value")
   .then(function(snapshot) {
     
-    var key = snapshot.key
-    // var child = snapshot.child("user").key
-    var children = snapshot.child("name").key
-     var children2 = snapshot.child("name").val()
-     var children3 = snapshot.child("name").child("name").val()
-      var children3 = snapshot.child("name").child("name").key
-      console.log(snapshot.child("name").val())
-      console.log(snapshot.child("user/name").val())
-    //  console.log(child)
-      console.log(children)
-      console.log(children2)
-      console.log(children3)
+    var name = snapshot.child("name").val();
+    var email = snapshot.child("email").val();
+    var list = snapshot.child("likes").val()
+    console.log(name, email)
+    console.log(list)
+  
   });
 
 
