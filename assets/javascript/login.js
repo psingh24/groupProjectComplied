@@ -111,18 +111,23 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
      window.location = 'index.html';
  }
 
-
+var name;
+var email;
+var list;
 var ref = firebase.database().ref("user");
 ref.once("value")
   .then(function(snapshot) {
     
-    var name = snapshot.child("name").val();
-    var email = snapshot.child("email").val();
-    var list = snapshot.child("likes").val()
-    console.log(name, email)
-    console.log(list)
+    name = snapshot.child("name").val();
+    email = snapshot.child("email").val();
+    list = snapshot.child("likes").val()
+    // console.log(name, email)
+    // console.log(list)
   
   });
+
+      console.log(name, email)
+    console.log(list)
 
 
 //   user.html("Welcome "+ user.displayName)
